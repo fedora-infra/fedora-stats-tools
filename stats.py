@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """ Some tools to grab stats from Fedora Infrastructure's datagrepper
 and plot them.
 
