@@ -1,0 +1,3 @@
+pygal
+requests
+wsgiref
