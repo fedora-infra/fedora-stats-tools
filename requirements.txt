@@ -1,3 +1,4 @@
 pygal
 requests
 wsgiref
+progressbar
