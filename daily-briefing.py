@@ -2,6 +2,7 @@
 """ Make an index page where you can find datagrepper stuff. """
 
 import jinja2
+import arrow
 
 docs_links = [
     "http://docs.fedoraproject.org/en-US/Fedora_Draft_Documentation/0.1/html/Virtualization_Deployment_and_Administration_Guide/index.html",
@@ -187,4 +188,7 @@ template = jinja2.Template("""
 </body> </html>
 """)
 
-print template.render(docs_links=docs_links, trans_links=trans_links)
+output = template.render(docs_links=docs_links, trans_links=trans_links)
+
+with open('{}-brief.html'.format(arrow.now().format()[0:10]), "wb") as f:
+        f.write(output)
