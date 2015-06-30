@@ -13,47 +13,66 @@
     <dt>13207 stable updates (+8.59%)</dt>
 
     <dd>
-    Updates go through 2 phases, when they spring forth frm a mind of a packagers to a yum install. They go through testing repositories, and then eventually the stable repositories some timea fter that (usually 14 days.) You can read all about the udpates Policy, which is approved by FESCo, and implemented by Bodhi, here: https://fedoraproject.org/wiki/Updates_Policy
+    Updates go through two phases, between the time they spring forth from the
+    mind of a packager and when they are available in a yum (now dnf) install.
+    They go through testing repositories, and then eventually the stable
+    repositories some time after that (usually 14 days.) You can read all about
+    the updates Policy, which is approved by FESCo, and implemented by Bodhi,
+    here: https://fedoraproject.org/wiki/Updates_Policy
     </dd>
 
     <dt>250 testing updates (+8.69%)</dt>
 
     <dd>
-    Testing is where updates go before they go to stable. Fedora Developers often enable or "run updates-testing" repositories, to test out the latest bits on their own machines, before they go to stable repositories, and out to users.
+    Testing is where updates go before they go to stable. Fedora Developers
+    often enable or "run updates-testing" repositories, to test out the latest
+    bits on their own machines, before they go to stable repositories, and out
+    to users.
     </dd>
 
     <dt>35 pending updates (-10.26%)</dt>
 
     <dd>
-    Pending updates are .... pending is the interstitial area between the testing/stable phase. When I submit a nethack update, it is pending, before it is stable. It doesn't get added to testing until the next morning. This is a stat with a very low shelf-life, (24 hours). There is no distinction between pending-testing and pending-stable, an issue with Bodhi1, fixed in Bodhi2.
+    Pending updates are .... pending is the interstitial area between the
+    testing/stable phase. When I submit a nethack update, it is pending, before
+    it is stable. It doesn't get added to testing until the next morning. This
+    is a stat with a very low shelf-life, (24 hours). There is no distinction
+    between pending-testing and pending-stable, an issue with Bodhi1, fixed in
+    Bodhi2.
     </dd>
 
     <dt>1520 obsolete updates (+14.72%)</dt>
 
     <dd>
-    Obsolete is a category for when an update goes to testing, but for some reason, it is decided that it isn't good for stable. Then another update comes along, and obsoletes or supercedes the declined update. It's like the island of misfit toys ;)
+    Obsolete is a category for when an update goes to testing, but for some
+    reason, it is decided that it isn't good for stable. Then another update
+    comes along, and obsoletes or supercedes the declined update. It's like the
+    island of misfit toys ;)
     </dd>
 
 <pre>
-   | 8397 bugfix updates (55.94% of updates) (+5.60%)
+   | 8397 Bugfix updates (55.94% of updates) (+5.60%)
    | 3605 enhancement updates (24.01% of updates) (+17.89%)
    | 1114 security updates (7.42% of updates) (+15.80%)
    | 1896 newpackage updates (12.63% of updates) (+6.28%)
-   -----This is yet another way we slice/dice updstaes. As they go through the testing->stable flow, they ahve a "type" (bugfix, security, enhancement, and newpackage). Udpates types are designated at the packager's discretion. You can read more about this in the updates policy doc (see above)
+   -----
+   This is yet another way we slice/dice updates. As they go through the
+   testing->stable flow, they have a "type" (bugfix, security, enhancement, and
+   newpackage). Updates types are designated at the packager's discretion. You can
+   read more about this in the updates policy doc (see above)
 
-    if you add up all the percentages, they should = 100%(ish)
-
+   if you add up all the percentages, they should = 100%(ish)
 </pre>
 
     <dt>12315 bugs resolved (+13.61%)</dt>
 
     <dd>
     Bugzilla bugs! When a packager creates an update, you can associate it
-    with one or more bugzilla bugs. You are incentivized to do so, because
-    when it gets pushed to stable, bodhi will auto-close the bugs
-    associated iwth your update, saving you time and effort :) IN bodhi1,
+    with one or more Bugzilla bugs. You are incentivized to do so, because
+    when it gets pushed to stable, Bodhi will auto-close the bugs
+    associated with your update, saving you time and effort :) IN Bodhi1,
     there is a single yes/no value for karma for every update. In Bodhi2,
-    you ahve a general karma, and a karma value for each bug assocaited
+    you have a general karma, and a karma value for each bug associated
     with it. So a tester can say "Yes, this bug is def fixed by this
     update. No, this one is not." 
     <br/>
@@ -65,7 +84,7 @@
 
     <dd>
     Critical path means... there are some packages flagged as such, when
-    they are required by the OS to boot(?) **TODO** Preoperly reeaserc hthis.
+    they are required by the OS to boot(?) **TODO** Properly research this.
     <br/>
 
     This increase may indicate that we're focusing on the core of Fedora,
@@ -102,7 +121,7 @@
     Of all the updates received feedback, there were 1195  unique users
     that submitted feedback, or did testing. That is a *huge* number, and it went
     up 15%! That is a 15% growth in active testers. FAS accounts is a weaker metric
-    for "active contributors" whereas bodhi users has a much higher signal.
+    for "active contributors" whereas Bodhi users has a much higher signal.
     </dd>
     
     <dt>49 proventesters (+2.08%)</dt>
@@ -117,7 +136,6 @@
    |     perl-5.18.4-290.fc20
    |     sudo-1.8.11p2-1.fc20
    |     testdisk-6.14-3.fc20
-
    | 15 critpath updates with positive karma and negative proventester feedback (0.94% of critpath updates) (+200%)
    |     createrepo-0.9.9-23.fc20
    |     dnf-0.4.15-1.fc20
@@ -134,38 +152,46 @@
    |     perl-5.18.4-290.fc20
    |     sudo-1.8.11p2-1.fc20
    |     testdisk-6.14-3.fc20
-
    | 630 critpath updates with positive karma and positive proventester feedback (39.30% of critpath) (+36.07%)
-
-   +---- Proventesters is a status that has been discontinued. You can read about why this was retired and the discussions around here here: https://fedoraproject.org/wiki/Proven_tester
+   +---- 
+    Proventesters is a status that has been discontinued. You can read about why
+    this was retired and the discussions around here here:
+    https://fedoraproject.org/wiki/Proven_tester
 </pre>
 
     <dt>304 anonymous users gave feedback (2.26%) (+49.75%)</dt>
 
     <dd>
-    Users without FAS accounts can provide karma on bodhi updates. This is
+    Users without FAS accounts can provide karma on Bodhi updates. This is
     the 2nd most impressive number from these metrics, as it is a *huge* increase
     in the number of people participating in the project. Coming up with an
     onboarding strategy for these users will be a subject of future research for
-    the commops team :)
+    the CommOps team :)
     </dd>
 
     <dt>2396 updates reached the stable karma threshold (18.14%) (+36.60%)</dt>
 
     <dd>
-    The stable karma threshold is what dictates the cascade from testing->stable. Updates have to wait N days (policy) before they go to stable. Updates that get enough "+1" comments, and accumulate karma, get "fast-tracked" to stable, without waiting for the minimum number of days.
+    The stable karma threshold is what dictates the cascade from
+    testing->stable. Updates have to wait N days (policy) before they go to
+    stable. Updates that get enough "+1" comments, and accumulate karma, get
+    "fast-tracked" to stable, without waiting for the minimum number of days.
     </dd>
         
     <dt>11200 updates reached the minimum time in testing threshold (84.80%) (+1.91%)</dt>
 
     <dd>
-    Updates that didn't get fast-tracked via karma. These 2 numbers should add up to ~100%. The missing percetages show the "obsoleted" updates (see: island of misfit updates above)
+    Updates that didn't get fast-tracked via karma. These 2 numbers should add
+    up to ~100%. The missing percentages show the "obsoleted" updates (see:
+    island of misfit updates above)
     </dd>
 
     <dt>8259 went from testing to stable *without* karma (63.79%) (-3.79%)</dt>
 
     <dd>
-    Updates that went from Testing-> Stable wihtout anyone providing karma. This is *alot* of packages, but it is still slightly down from the previous release.
+    Updates that went from Testing->Stable without anyone providing karma.
+    This is <strong>*a lot*</strong> of packages, but it is still slightly down from the previous
+    release.
     </dd>
 
     <dt>33 updates were pushed to stable with negative karma (0.25%) (-10.81%)</dt>
