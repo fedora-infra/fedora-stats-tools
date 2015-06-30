@@ -1,0 +1,135 @@
+interlinear Glossary
+    15012 updates (+8.37%)
+        An update is any change to one or more packages that happens after we've cut an initial release of the distribution. 
+    6952 packages updated (+6.09%)
+        Packages update in a release (f20). Notice there are more updates than packages, which means some packages were updated multiple times. ~7K is about 1/3 of all the packages in Fedora, which means about 2/3rds of all packages remained the same through F20, which was the last non-editions release of Fedora.
+    13207 stable updates (+8.59%)
+        Updates go through 2 phases, when they spring forth frm a mind of a packagers to a yum install. They go through testing repositories, and then eventually the stable repositories some timea fter that (usually 14 days.) You can read all about the udpates Policy, which is approved by FESCo, and implemented by Bodhi, here: https://fedoraproject.org/wiki/Updates_Policy
+
+    250 testing updates (+8.69%)
+        Testing is where updates go before they go to stable. Fedora Developers often enable or "run updates-testing" repositories, to test out the latest bits on their own machines, before they go to stable repositories, and out to users.
+    35 pending updates (-10.26%)
+        Pending updates are .... pending is the interstitial area between the testing/stable phase. When I submit a nethack update, it is pending, before it is stable. It doesn't get added to testing until the next morning. This is a stat with a very low shelf-life, (24 hours). There is no distinction between pending-testing and pending-stable, an issue with Bodhi1, fixed in Bodhi2.
+    1520 obsolete updates (+14.72%)
+        Obsolete is a category for when an update goes to testing, but for some reason, it is decided that it isn't good for stable. Then another update comes along, and obsoletes or supercedes the declined update. It's like the island of misfit toys ;)
+
+   | 8397 bugfix updates (55.94% of updates) (+5.60%)
+   | 3605 enhancement updates (24.01% of updates) (+17.89%)
+   | 1114 security updates (7.42% of updates) (+15.80%)
+   | 1896 newpackage updates (12.63% of updates) (+6.28%)
+   -----This is yet another way we slice/dice updstaes. As they go through the testing->stable flow, they ahve a "type" (bugfix, security, enhancement, and newpackage). Udpates types are designated at the packager's discretion. You can read more about this in the updates policy doc (see above)
+
+    if you add up all the percentages, they should = 100%(ish)
+
+    12315 bugs resolved (+13.61%)
+        Bugzilla bugs! When a packager creates an update, you can associate it
+        with one or more bugzilla bugs. You are incentivized to do so, because
+        when it gets pushed to stable, bodhi will auto-close the bugs
+        associated iwth your update, saving you time and effort :) IN bodhi1,
+        there is a single yes/no value for karma for every update. In Bodhi2,
+        you ahve a general karma, and a karma value for each bug assocaited
+        with it. So a tester can say "Yes, this bug is def fixed by this
+        update. No, this one is not." 
+
+        (See: threebean.org/blog/bodhi2-karma-system-preview)
+
+    1603 critical path updates (10.68% of updates) (+44.41%)
+        Critical path means... there are some packages flagged as such, when
+        they are required by the OS to boot(?) **TODO** Preoperly reeaserc hthis.
+
+        This increase may indicate that we're focusing on the core of Fedora,
+        or the split into editions, based on how this number changes in the
+        next release.
+    1560 approved critical path updates (+43.12%)
+    0 unapproved critical path updates (+0%)
+
+    5455 updates received feedback (36.34% of updates) (+34.29%)
+        This is any comments given to an update. This number being up means
+        that more people are testing. It is possible that someone makes an amazing vim
+        plugin, but I'm the only one that uses it when I package it for Fedora, so that
+        means no one provides any package karma to it? That is one interpretation. Or,
+        the users are not in the set of active testers? There is a larger story to be
+        told here.
+
+    1259 +0 comments (+41.62%)
+    11579 +1 comments (+47.79%)
+    678 -1 comments (+29.14%)
+
+        This is a way to slice/dice the types of feedback. +0 means neutral, +1
+        means agree ready for stable, -1 means not ready for stable.
+
+    1195 unique authenticated karma submitters (+15.35%)
+        Of all the updates received feedback, there were 1195  unique users
+        that submitted feedback, or did testing. That is a *huge* number, and it went
+        up 15%! That is a 15% growth in active testers. FAS accounts is a weaker metric
+        for "active contributors" whereas bodhi users has a much higher signal.
+    
+    49 proventesters (+2.08%)
+    1681 +1's from proventesters (+5.13%)
+    96 -1's from proventesters (+41.18%)
+
+
+   | 5 critpath updates with conflicting proventesters (0.31% of critpath updates) (+25%)
+   |     dnf-0.4.18-1.fc20
+   |     kernel-3.13.4-200.fc20
+   |     perl-5.18.4-290.fc20
+   |     sudo-1.8.11p2-1.fc20
+   |     testdisk-6.14-3.fc20
+
+   | 15 critpath updates with positive karma and negative proventester feedback (0.94% of critpath updates) (+200%)
+   |     createrepo-0.9.9-23.fc20
+   |     dnf-0.4.15-1.fc20
+   |     dnf-0.4.18-1.fc20
+   |     dracut-037-10.git20140402.fc20
+   |     gnome-shell-3.10.4-6.fc20
+   |     kernel-3.11.10-301.fc20
+   |     kernel-3.13.3-201.fc20
+   |     kernel-3.13.4-200.fc20
+   |     kernel-3.14.2-200.fc20
+   |     libsolv-0.6.0-0.git05baf54.fc20
+   |     llvm-3.4-10.fc20
+   |     PackageKit-0.8.14-2.fc20
+   |     perl-5.18.4-290.fc20
+   |     sudo-1.8.11p2-1.fc20
+   |     testdisk-6.14-3.fc20
+
+   | 630 critpath updates with positive karma and positive proventester feedback (39.30% of critpath) (+36.07%)
+
+   +---- Proventesters is a status that has been discontinued. You can read about why this was retired and the discussions around here here: https://fedoraproject.org/wiki/Proven_tester
+
+    304 anonymous users gave feedback (2.26%) (+49.75%)
+        Users without FAS accounts can provide karma on bodhi updates. This is
+        the 2nd most impressive number from these metrics, as it is a *huge* increase
+        in the number of people participating in the project. Coming up with an
+        onboarding strategy for these users will be a subject of future research for
+        the commops team :)
+
+    2396 updates reached the stable karma threshold (18.14%) (+36.60%)
+        The stable karma threshold is what dictates the cascade from testing->stable. Updates have to wait N days (policy) before they go to stable. Updates that get enough "+1" comments, and accumulate karma, get "fast-tracked" to stable, without waiting for the minimum number of days.
+        
+    11200 updates reached the minimum time in testing threshold (84.80%) (+1.91%)
+        Updates that didn't get fast-tracked via karma. These 2 numbers should add up to ~100%. The missing percetages show the "obsoleted" updates (see: island of misfit updates above)
+
+    8259 went from testing to stable *without* karma (63.79%) (-3.79%)
+        Updates that went from Testing-> Stable wihtout anyone providing karma. This is *alot* of packages, but it is still slightly down from the previous release.
+
+    33 updates were pushed to stable with negative karma (0.25%) (-10.81%)
+        Normally, any negative karma means there is a bug in an update. This
+        can be because a packager was being hasty, or reckless, or the karma reporter
+        was mistaken, and the packager knew better, and pushed to stable anyways. This
+        is a *fractional* number of the total number of updates, and it would be
+        interesting to dig in and find out which ones.
+
+    57 critical path updates pushed to stable *without* karma (-60.96%)
+        (See: Critical Path updates above.)
+
+    Time spent in testing:
+        mean = 13 days (+8.33%)
+        median = 9 days (+12.5%)
+        mode = 8 days (+0%)
+
+    Mean is the average number of days. Median is the middle most frequent
+    number of days. Mode is the most frequent number of days.
+
+    There is a difference between alpha/beta releases, and EPEL releases have a
+    longer minimum testing period length (see: policy)
