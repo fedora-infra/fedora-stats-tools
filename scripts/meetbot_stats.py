@@ -40,53 +40,60 @@ queries = [
     
 ]
 
+with open("monthwise.txt",'w+') as f :
+	for query in queries:
+		print "---------------------------------------"
+		print "MONTHWISE STATISTICS"
+		print "---------------------------------------"
+		print "query is", query
+		print "---------------"
+		f.write("query is "+str(query)+"\n")
+		for month in range(12):
+			end = time.time() - one_month * month
+			start = time.time() - one_month * (month + 1)
+			print "%i months ago" % month,
+			ctr=get_count(start, end, query)
+			print str(ctr)
+			f.write(str(month)+" months ago "+str(ctr)+"\n")
+		f.write("\n\n")
+		print
+		print "---------------------------------------"
 
-for query in queries:
-    print "---------------------------------------"
-    print "MONTHWISE STATISTICS"
-    print "---------------------------------------"
-    print "query is", query
-    print "---------------"
-    with open("monthwise.txt",'w+') as f :
-	    for month in range(12):
-		end = time.time() - one_month * month
-		start = time.time() - one_month * (month + 1)
-		print "%i months ago" % month,
-		ctr=get_count(start, end, query)
-		print str(ctr)
-		f.write(str(month)+" months ago : "+str(ctr)+"\n")
-    print
-    print "---------------------------------------"
-for query in queries:
-    print "---------------------------------------"
-    print "WEEKWISE STATISTICS"
-    print "---------------------------------------"
-    print "query is", query
-    print "---------------"
-    with open("weekwise.txt",'w+') as f :
-	    for week in range(52):
-		end = time.time() - one_week * week
-		start = time.time() - one_week * (week + 1)
-		print "%i weeks ago" % week,
-		ctr=get_count(start, end, query)
-		print str(ctr)
-		f.write(str(week)+" weeks ago : "+str(ctr)+"\n")
-    print
-    print "---------------------------------------"
-for query in queries:
-    print "---------------------------------------"
-    print "DAYWISE STATISTICS"
-    print "---------------------------------------"
-    print "query is", query
-    print "---------------"
-    with open("daywise.txt",'w+') as f :
-	    for day in range(365):
-		end = time.time() - one_day * day
-		start = time.time() - one_day * (day + 1)
-		print "%i days ago" % day,
-		ctr=get_count(start, end, query)
-		print str(ctr)
-		f.write(str(day)+" days ago : "+str(ctr)+"\n")
-    print
-    print "---------------------------------------"
+with open("weekwise.txt",'w+') as f :
+	for query in queries:
+		print "---------------------------------------"
+		print "WEEKWISE STATISTICS"
+		print "---------------------------------------"
+		print "query is", query
+		print "---------------"
+		f.write("query is "+str(query)+"\n")
+		for week in range(52):
+			end = time.time() - one_week * week
+			start = time.time() - one_week * (week + 1)
+			print "%i weeks ago" % week,
+			ctr=get_count(start, end, query)
+			print str(ctr)
+			f.write(str(week)+" weeks ago "+str(ctr)+"\n")
+		f.write("\n\n")
+		print
+		print "---------------------------------------"
+
+with open("daywise.txt",'w+') as f :
+	for query in queries:
+		print "---------------------------------------"
+		print "DAYWISE STATISTICS"
+		print "---------------------------------------"
+		print "query is", query
+		f.write("query is "+str(query)+"\n")
+		print "---------------"
+		for day in range(365):
+			end = time.time() - one_day * day
+			start = time.time() - one_day * (day + 1)
+			print "%i days ago" % day,
+			ctr=get_count(start, end, query)
+			print str(ctr)
+			f.write(str(day)+" days ago "+str(ctr)+"\n")
+		f.write("\n\n")		
+		print
+		print "---------------------------------------"
 
