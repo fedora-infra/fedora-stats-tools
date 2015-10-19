@@ -17,7 +17,7 @@ Interesting options
 
 It has command line options.  Try::
 
-    $ git clone https://github.com/ralphbean/fedora-stats-tools.git
+    $ git clone https://github.com/fedora-infra/fedora-stats-tools.git
     $ cd fedora-stats-tools/
     $ python stats.py --help
 
