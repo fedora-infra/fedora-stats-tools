@@ -1,0 +1,38 @@
+
+                        +---------------+
+                        |               |   +--------------+
+                        | statscache    |   | {s} postgres |    +---------------+
+                        | (a fedmsg-hub |   | for holding  |    | statscachei   |
+                     +->| daemon with   |-->| cached time  |--->| HTTP API      |-----------------------------------+
+                     |  | the statscache|   | series and   |    | serving stats |                                   |
+                     |  | consumer.     |   | other data   |    +---------------+                                   | serving ajax data for fancy
+                     |  |               |   +--------------+                                                        | js activity graphs
+                     |  +---------------+                                                                           |
+                     |                                                                                              V
+                     |                                                   push updated JSON                +-------------------------+
+                     |                                                   to clients asap                  | web client              |
+                     |                                          +---------------------------------------->| (built from HTML and JS |
+                     |                                          |                                         | served by the wsgi app) |
+                     |                                          |                                         +-------------------------+
+                     |                                          |                                           ^                     |
+                     |                                          |                                           |                     |
+                     |                               +--------------+                                       | initial page load   | configuration changes
+                     |                               | EventSource  |       /-----------------------+       | and ajax requests   | to widgets and hubs
+                     |                               | server       |<------|{s} redis              |       |                     |
+                     |                               +--------------+       |  (we store the data   |       |                     V
+                     |                                                      |  for widgets here     |     +--------------------------+
+                     |  +---------------+   /-----------+   +-----------+   |  and rebuild it       |---->|                          |
+                     |  |               |-->|{s} redis  |-->| N cache   |-->|  as necessary)        |<----|                          |
+                     |  | hubs backend  |   |task queue |-->| worker(s) |   +-----------------------/     |  hubs wsgi app           |
+                     |  | (a fedmsg-hub |   +-----------/   +-----------+                                 |  (the frontend that      |
+---------------------+->| daemon with a |                         ^                                       |  serves what the users   |
+     ^  fedmsg          | fedora-hubs   |                         |         +-----------------------+     |  see)                    |
+     |  (fas changes,   | consumer.     |                         +---------|{s} postgres           |<----|                          |
+     |  trac tickets,   |               |                                   |  (we store the config |     +--------------------------+
+     |  etc...)         +---------------+                                   |  for widgets/hubs     |             |
+     |                                                                      |  here)                |             |
+     |                                                                      +-----------------------+             |
+     |                                                                                                            |
+     |                                                                                                            |
+     +------------------------------------------------------------------------------------------------------------+
+                                   config changes to hubs/widgets, via fedmsg
