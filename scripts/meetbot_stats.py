@@ -79,7 +79,6 @@ with open("weekwise.txt",'w+') as f :
 		print
 		print "---------------------------------------"
 
-
 with open("daywise.txt",'w+') as f :
 	for query in queries:
 		print "---------------------------------------"
