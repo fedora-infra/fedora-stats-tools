@@ -21,6 +21,7 @@ def get_count(start, finish, query):
     data = response.json()
     return data['total']
 
+
 queries = [
     {
         'topic': 'org.fedoraproject.prod.meetbot.meeting.complete',
