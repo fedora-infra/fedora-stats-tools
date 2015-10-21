@@ -15,8 +15,8 @@ def get_count(start, finish, query):
     query['start'] = start
     query['end'] = end
     response = requests.get(
-    'https://apps.fedoraproject.org/datagrepper/raw',
-    params=query,
+    	'https://apps.fedoraproject.org/datagrepper/raw',
+	params=query,
     )
     data = response.json()
     return data['total']
@@ -40,7 +40,7 @@ queries = [
     },
     
 ]
-"""
+
 with open('TimeStampedMonthwise.txt', 'w+') as f:
     print "---------------------------------------"
     print "MONTHWISE STATISTICS"
@@ -58,7 +58,7 @@ with open('TimeStampedMonthwise.txt', 'w+') as f:
 	f.write("\n\n")       	
 	print
         print "---------------------------------------"
-"""
+
 
 with open('TimeStampedWeekwise.txt', 'w+') as f :
     print "---------------------------------------"
