@@ -15,8 +15,8 @@ def get_count(start, finish, query):
     query['start'] = start
     query['end'] = end
     response = requests.get(
-    	'https://apps.fedoraproject.org/datagrepper/raw',
-	params=query,
+    'https://apps.fedoraproject.org/datagrepper/raw',
+    params=query,
     )
     data = response.json()
     return data['total']
@@ -41,6 +41,7 @@ queries = [
     
 ]
 
+curr=time.time()
 with open('TimeStampedMonthwise.txt', 'w+') as f:
     print "---------------------------------------"
     print "MONTHWISE STATISTICS"
@@ -50,8 +51,8 @@ with open('TimeStampedMonthwise.txt', 'w+') as f:
         print "---------------"
 	f.write('query is '+str(query)+"\n")
         for month in range(12):
-            end = time.time() - one_month * month
-            start = time.time() - one_month * (month + 1)
+            end = curr - one_month * month
+            start = curr - one_month * (month + 1)
             ctr=get_count(start, end, query)
 	    print str(time.ctime(int(start)))+" "+str(time.ctime(int(end)))+" "+str(ctr)
 	    f.write(str(time.ctime(int(start)))+" "+str(time.ctime(int(end)))+" "+str(ctr)+"\n")
@@ -69,8 +70,8 @@ with open('TimeStampedWeekwise.txt', 'w+') as f :
         print "---------------"
         f.write("query is "+str(query)+"\n")
         for week in range(52):
-            end = time.time() - one_week * week
-            start = time.time() - one_week * (week + 1)
+            end = curr - one_week * week
+            start = curr - one_week * (week + 1)
             ctr=get_count(start, end, query)
 	    print str(time.ctime(int(start)))+" "+str(time.ctime(int(end)))+" "+str(ctr)
 	    f.write(str(time.ctime(int(start)))+" "+str(time.ctime(int(end)))+" "+str(ctr)+"\n")
@@ -87,8 +88,8 @@ with open("TimeStampedDaywise.txt",'w+') as f :
         f.write("query is "+str(query)+"\n")
         print "---------------"
         for day in range(365):
-            end = time.time() - one_day * day
-            start = time.time() - one_day * (day + 1)
+            end = curr - one_day * day
+            start = curr - one_day * (day + 1)
             ctr=get_count(start, end, query)
 	    print str(time.ctime(int(start)))+" "+str(time.ctime(int(end)))+" "+str(ctr)
 	    f.write(str(time.ctime(int(start)))+" "+str(time.ctime(int(end)))+" "+str(ctr)+"\n")
