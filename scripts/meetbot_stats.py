@@ -15,8 +15,8 @@ def get_count(start, finish, query):
     query['start'] = start
     query['end'] = end
     response = requests.get(
-    'https://apps.fedoraproject.org/datagrepper/raw',
-    params=query,
+    	'https://apps.fedoraproject.org/datagrepper/raw',
+    	params=query,
     )
     data = response.json()
     return data['total']
