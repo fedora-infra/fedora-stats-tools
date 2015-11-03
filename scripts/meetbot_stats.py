@@ -73,8 +73,8 @@ with open('TimeStampedMonthwise.txt', 'w+') as f:
             ctr=get_count(start, end, query)
 	    print str(time.ctime(int(start)))+" "+str(time.ctime(int(end)))+" "+str(ctr)
 	    f.write(str(time.ctime(int(start)))+","+str(time.ctime(int(end)))+","+str(ctr)+",\n")
-	f.write(",\n,\n")       	
-	print
+        f.write(",\n,\n")       	
+        print
         print "---------------------------------------"
 
 
@@ -92,7 +92,7 @@ with open('TimeStampedWeekwise.txt', 'w+') as f :
             ctr=get_count(start, end, query)
 	    print str(time.ctime(int(start)))+","+str(time.ctime(int(end)))+","+str(ctr)
 	    f.write(str(time.ctime(int(start)))+","+str(time.ctime(int(end)))+","+str(ctr)+",\n")
-	f.write(",\n,\n")
+        f.write(",\n,\n")
         print
         print "---------------------------------------"
 
@@ -110,7 +110,7 @@ with open("TimeStampedDaywise.txt",'w+') as f :
             ctr=get_count(start, end, query)
 	    print str(time.ctime(int(start)))+" "+str(time.ctime(int(end)))+" "+str(ctr)
 	    f.write(str(time.ctime(int(start)))+","+str(time.ctime(int(end)))+","+str(ctr)+",\n")
-	f.write(",\n,\n")     
+        f.write(",\n,\n")     
         print
         print "---------------------------------------"
 
