@@ -15,12 +15,11 @@ def get_count(start, finish, query):
     query['start'] = start
     query['end'] = end
     response = requests.get(
-    	'https://apps.fedoraproject.org/datagrepper/raw',
-    	params=query,
+    'https://apps.fedoraproject.org/datagrepper/raw',
+    params=query,
     )
     data = response.json()
     return data['total']
-
 
 queries = [
     {
@@ -38,10 +37,28 @@ queries = [
     {
         'topic' : 'org.fedoraproject.prod.meetbot.meeting.topic.update',
     },
-    
+    {
+        'topic': 'org.fedoraproject.prod.meetbot.meeting.item.agreed' ,
+    },
+    {
+        'topic': 'org.fedoraproject.prod.meetbot.meeting.item.action' ,
+    },
+    {
+        'topic': 'org.fedoraproject.prod.meetbot.meeting.item.info' ,
+    },
+    {
+        'topic': 'org.fedoraproject.prod.meetbot.meeting.item.idea' ,
+    },
+    {
+        'topic': 'org.fedoraproject.prod.meetbot.meeting.item.accepted' ,
+    },
+    {
+        'topic': 'org.fedoraproject.prod.meetbot.meeting.item.rejected' ,
+    },
 ]
 
 curr=time.time()
+
 with open('TimeStampedMonthwise.txt', 'w+') as f:
     print "---------------------------------------"
     print "MONTHWISE STATISTICS"
@@ -49,14 +66,14 @@ with open('TimeStampedMonthwise.txt', 'w+') as f:
         print "---------------------------------------"
         print "query is", query
         print "---------------"
-	f.write('query is '+str(query)+"\n")
+	f.write('query is '+str(query)+",\n")
         for month in range(12):
             end = curr - one_month * month
             start = curr - one_month * (month + 1)
             ctr=get_count(start, end, query)
 	    print str(time.ctime(int(start)))+" "+str(time.ctime(int(end)))+" "+str(ctr)
-	    f.write(str(time.ctime(int(start)))+" "+str(time.ctime(int(end)))+" "+str(ctr)+"\n")
-	f.write("\n\n")       	
+	    f.write(str(time.ctime(int(start)))+","+str(time.ctime(int(end)))+","+str(ctr)+",\n")
+	f.write(",\n,\n")       	
 	print
         print "---------------------------------------"
 
@@ -68,14 +85,14 @@ with open('TimeStampedWeekwise.txt', 'w+') as f :
         print "---------------------------------------"
         print "query is", query
         print "---------------"
-        f.write("query is "+str(query)+"\n")
+        f.write("query is "+str(query)+",\n")
         for week in range(52):
             end = curr - one_week * week
             start = curr - one_week * (week + 1)
             ctr=get_count(start, end, query)
-	    print str(time.ctime(int(start)))+" "+str(time.ctime(int(end)))+" "+str(ctr)
-	    f.write(str(time.ctime(int(start)))+" "+str(time.ctime(int(end)))+" "+str(ctr)+"\n")
-        f.write("\n\n")
+	    print str(time.ctime(int(start)))+","+str(time.ctime(int(end)))+","+str(ctr)
+	    f.write(str(time.ctime(int(start)))+","+str(time.ctime(int(end)))+","+str(ctr)+",\n")
+	f.write(",\n,\n")
         print
         print "---------------------------------------"
 
@@ -85,15 +102,15 @@ with open("TimeStampedDaywise.txt",'w+') as f :
     for query in queries:
         print "---------------------------------------"
         print "query is", query
-        f.write("query is "+str(query)+"\n")
+        f.write("query is "+str(query)+",\n")
         print "---------------"
         for day in range(365):
             end = curr - one_day * day
             start = curr - one_day * (day + 1)
             ctr=get_count(start, end, query)
 	    print str(time.ctime(int(start)))+" "+str(time.ctime(int(end)))+" "+str(ctr)
-	    f.write(str(time.ctime(int(start)))+" "+str(time.ctime(int(end)))+" "+str(ctr)+"\n")
-        f.write("\n\n")     
+	    f.write(str(time.ctime(int(start)))+","+str(time.ctime(int(end)))+","+str(ctr)+",\n")
+	f.write(",\n,\n")     
         print
         print "---------------------------------------"
 
