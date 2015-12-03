@@ -1,0 +1,35 @@
+Fedora (Nov 30th)   Follows     New
+Twitter             63786       +213
+Facebook            55235       +67
+G+ Page             24158       +8
+G+ Community        15322       +86
+
+Fedora (Nov 23rd)   Follows     New
+Twitter             63573       +391
+Facebook            55198       +89 
+G+ Page             24150       +15
+G+ Community        15236       +124
+
+Fedora (Nov 16th)   Follows     New
+Twitter             63182       +380
+Facebook            55079       +129 <- Milestone!
+G+ Page             24114       +15
+G+ Community        15112       +24
+
+Fedora (Nov 9th)    Follows     New
+Twitter             62802       +478
+Facebook            54950       +196
+G+ Page             24099       +73
+G+ Community        15088       +60
+
+Fedora (Nov 2nd)    Follows     New
+Twitter             62324       +343
+Facebook            54754       +55
+G+ Page             24026       +39
+G+ Community        15028       +39  <- Milestone!
+
+Fedora (Oct. 24th)  Follows     New
+Twitter             61981       +644
+Facebook            54699       +257
+G+ Page             23987       +60
+G+ Community        14989       +57
