@@ -4,12 +4,23 @@ import requests
 
 url = 'https://apps.fedoraproject.org/datagrepper/raw'
 
+ignored_badges = [
+    'origin',
+]
+
+
+def badge_id(msg):
+    return msg['msg'].get('badge', {}).get('badge_id')
+
+
 def grep(**kwargs):
     response = requests.get(url, params=kwargs)
     data = response.json()
     pages = data['pages']
 
     for message in data['raw_messages']:
+        if badge_id(message) in ignored_badges:
+            continue
         yield message
 
     for page in range(1, pages):
@@ -17,6 +28,8 @@ def grep(**kwargs):
         response = requests.get(url, params=kwargs)
         data = response.json()
         for message in data['raw_messages']:
+            if badge_id(message) in ignored_badges:
+                continue
             yield message
 
 
