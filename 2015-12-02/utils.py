@@ -35,7 +35,11 @@ def badge2tags(badge_id):
         url = 'https://badges.fedoraproject.org/badge/%s/json' % badge_id
         response = requests.get(url)
         data = response.json()
-        tags = (data['tags'] or '').strip(',').split(',')
-        badge_tags_cache[badge_id] = tags
+        if 'tags' in data:
+            tags = (data['tags'] or '').strip(',').split(',')
+            badge_tags_cache[badge_id] = tags
+        else:
+            badge_tags_cache[badge_id] = []
+
     return badge_tags_cache[badge_id]
 
