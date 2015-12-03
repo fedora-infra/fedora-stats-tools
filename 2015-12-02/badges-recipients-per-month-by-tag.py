@@ -35,7 +35,7 @@ print ", ".join(interesting_tags)
 users = collections.defaultdict(set)
 last_bucket = None
 for msg in messages:
-    bucket = utils.daily_timebucket(msg['timestamp'])
+    bucket = utils.monthly_timebucket(msg['timestamp'])
     if not last_bucket:
         last_bucket = bucket
     if bucket != last_bucket:
