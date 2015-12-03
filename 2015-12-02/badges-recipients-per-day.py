@@ -13,7 +13,7 @@ logging.basicConfig(level=logging.DEBUG)
 start = 1443074039  # A couple months ago
 
 messages = utils.grep(
-    category='fedbadges',
+    topic='org.fedoraproject.prod.fedbadges.badge.award',
     rows_per_page=100,
     start=start,
     order='asc',  # Start at the beginning, end at now.
