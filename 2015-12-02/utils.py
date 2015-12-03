@@ -24,3 +24,7 @@ def monthly_timebucket(timestamp):
     then = datetime.datetime.fromtimestamp(timestamp)
     date = datetime.date(then.year, then.month, 1)
     return date
+
+def daily_timebucket(timestamp):
+    then = datetime.datetime.fromtimestamp(timestamp)
+    return then.date()

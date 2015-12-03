@@ -23,11 +23,11 @@ messages = utils.grep(
 users = set()
 last_bucket = None
 for msg in messages:
-    bucket = utils.monthly_timebucket(msg['timestamp'])
+    bucket = utils.daily_timebucket(msg['timestamp'])
     if not last_bucket:
         last_bucket = bucket
     if bucket != last_bucket:
-        # Then we've switched to the next month
+        # Then we've switched to the next day
         print ", ".join(map(str, [last_bucket, len(users)]))
         # Reset our markers
         last_bucket = bucket
