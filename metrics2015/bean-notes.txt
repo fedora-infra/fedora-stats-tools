@@ -1,0 +1,22 @@
+The general downward trend of badges:
+    Likely comes from the "hobbyist" contributors. These are contributors who
+    only come around once every 6 months or so, to update the 5 or so packages
+    they maintain, and then leave again.
+
+    By now, most of those contributors have made their way through the system.
+    ]
+
+Spikes
+    Origin - Latest badge spike
+    First big spike after flock - Lifecycle Series Launch (10K)
+
+
+MLS
+===
+
+    Total People Posting by Year:
+    -----------------------------
+    The number of posters to a list is trac biased, because comments show up
+    from the same user?
+
+    

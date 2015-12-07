@@ -1,0 +1,34 @@
+Mailing List            # of Posts
+
+Devel                   216588
+Ambassadors             23975
+Epel-package-announce   23731
+389-users               18331
+Infrastructure          16597
+Brasil-marketing        15306
+Council-discuss         13849
+Desktop                 13052
+Trans                   12258
+Packaging               11089
+Arm                     10146
+389-commits             7822
+Design-team             7396
+De-users                6410
+Xen                     6141
+Cloud                   6121
+Buildsys                4914
+389-devel               4360
+Erlang                  3620
+Announce                3294
+Olpc                    3161
+Design-team-tickets     3122
+Xfce                    2421
+Kexec                   2380
+Fonts                   1813
+S390x                   1762
+Devel-announce          1704
+Games                   1654
+Laptop                  1354
+Irc-support-sig         1241
+Badges                  1079
+Env-and-stacks          996

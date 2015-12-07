@@ -1,0 +1,27 @@
+Mailing List            Total Messages
+devel                   11257
+arm-builds              6484
+epel-package-announce   5189
+desktop                 1737
+arm                     1358
+cloud                   1315
+infrastructure          1226
+design-team-tickets     1087
+ambassadors             977
+kexec                   748
+council-discuss         733
+erlang                  710
+packaging               685
+badges                  666
+389-users               639
+389-devel               543
+buildsys                442
+trans                   438
+design-team             382
+env-and-stacks          356
+s390x                   323
+389-commits             307
+xfce                    252
+devel-announce          222
+commops                 173
+argentina               130
