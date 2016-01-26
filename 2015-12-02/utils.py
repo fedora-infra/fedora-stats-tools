@@ -13,8 +13,14 @@ def badge_id(msg):
     return msg['msg'].get('badge', {}).get('badge_id')
 
 
-def grep(**kwargs):
+def grep(tries=0, **kwargs):
     response = requests.get(url, params=kwargs)
+    if not bool(response):
+        if tries > 7:
+            raise IOError("Failed to %r %r" % (response.url, response))
+        for item in grep(tries=tries + 1, **kwargs):
+            yield item
+
     data = response.json()
     pages = data['pages']
 
@@ -26,8 +32,15 @@ def grep(**kwargs):
     for page in range(1, pages):
         kwargs['page'] = page
         response = requests.get(url, params=kwargs)
-        data = response.json()
-        for message in data['raw_messages']:
+        try:
+            data = response.json()
+        except Exception as e:
+            if "Expecting value" in str(e):
+                continue
+            else:
+                raise
+
+        for message in data.get('raw_messages', []):
             if badge_id(message) in ignored_badges:
                 continue
             yield message
@@ -41,6 +54,11 @@ def monthly_timebucket(timestamp):
 def daily_timebucket(timestamp):
     then = datetime.datetime.fromtimestamp(timestamp)
     return then.date()
+
+def weekly_timebucket(timestamp):
+    then = datetime.datetime.fromtimestamp(timestamp)
+    calendar = then.isocalendar()
+    return str(calendar[0]) + "-" + ("%i" % calendar[1]).zfill(2)
 
 badge_tags_cache = {}
 def badge2tags(badge_id):
