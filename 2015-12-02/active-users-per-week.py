@@ -33,41 +33,42 @@ try:
 except OSError:
     pass
 
-for day in range(8, 364, 7):
-    bucket = "2015-{0:0>3}".format(day - 7)
-    terminus = "2015-{0:0>3}".format(day)
-    start = int(time.mktime(datetime.datetime.strptime(bucket, "%Y-%j").timetuple()))
-    end = int(time.mktime(datetime.datetime.strptime(terminus, "%Y-%j").timetuple()))
+for year in [2012, 2013, 2014]:
+    for day in range(8, 365, 7):
+        bucket = "{0}-{1:0>3}".format(year, day - 7)
+        terminus = "{0}-{1:0>3}".format(year, day)
+        start = int(time.mktime(datetime.datetime.strptime(bucket, "%Y-%j").timetuple()))
+        end = int(time.mktime(datetime.datetime.strptime(terminus, "%Y-%j").timetuple()))
 
-    print "Working on data/%s/%s.csv" % (discriminant, bucket)
+        print "Working on data/%s/%s.csv" % (discriminant, bucket)
 
-    messages = utils.grep(
-        rows_per_page=100,
-        meta='usernames',
-        start=start,
-        end=end,
-        order='asc',  # Start at the beginning, end at now.
-        topic=discriminant,
-        # Cut this stuff out, because its just so spammy.
-        not_user=['koschei', 'anonymous'],
-        not_topic=verboten,
-    )
+        messages = utils.grep(
+            rows_per_page=100,
+            meta='usernames',
+            start=start,
+            end=end,
+            order='asc',  # Start at the beginning, end at now.
+            topic=discriminant,
+            # Cut this stuff out, because its just so spammy.
+            not_user=['koschei', 'anonymous'],
+            not_topic=verboten,
+        )
 
-    users = {}
-    for i, msg in enumerate(messages):
-        # sanity check
-        if msg['topic'] in verboten:
-            raise "hell"
+        users = {}
+        for i, msg in enumerate(messages):
+            # sanity check
+            if msg['topic'] in verboten:
+                raise "hell"
 
-        for user in msg['meta']['usernames']:
-            users[user] = users.get(user, 0) + 1
+            for user in msg['meta']['usernames']:
+                users[user] = users.get(user, 0) + 1
 
-        if i % 50 == 0:
-            sys.stdout.write(".")
-            sys.stdout.flush()
+            if i % 50 == 0:
+                sys.stdout.write(".")
+                sys.stdout.flush()
 
-    print " done with", bucket
+        print " done with", bucket
 
-    with open('data/%s/%s.csv' % (discriminant, bucket), 'w') as f:
-        for user in users:
-            f.write('%s, %i\n' % (user, users[user]))
+        with open('data/%s/%s.csv' % (discriminant, bucket), 'w') as f:
+            for user in users:
+                f.write('%s, %i\n' % (user, users[user]))
