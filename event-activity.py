@@ -1,14 +1,12 @@
-#Script to understand User activity after an event
-#Imports user list from Badge Awarded for event or else from fedmsg activity i.e. signed in to Fedora Badges for first time
-#Returns user activity : pre event, during event, post event and list of new contributors onboarded
+#Script to understand impact of Fedora events using participant activity(Fedora contributions) pre/post the event as a measure
+#Imports participants list from Badge Awarded for event or else from fedmsg activity i.e. signed in to Fedora Badges for first time
+#Returns participants activity : pre event/post event and list of new contributors onboarded due to the event
 
 import re
 import copy
 import time
 import requests
 import urllib2
-
-
 
 # <---------EDIT EVENT DETAILS HERE ------------>
 BADGE_URL =  "https://badges.fedoraproject.org/badge/fosdem-2016-attendee"
@@ -21,7 +19,6 @@ one_hour = one_minute * 60
 one_day = one_hour * 24
 one_month = one_day * 30
 one_year = one_day * 365
-
 
 def get_datagrepper_url( start_time , end_time ) :
     topic = "org.fedoraproject.prod.fedbadges.person.login.first"
@@ -88,11 +85,6 @@ def new_user(username , end_time) :
         return True
     return False    
 
-
-
-
-
-
 curr = time.time()
 start_time =   int(time.mktime(time.strptime( EVENT_START, '%Y-%m-%d %H:%M:%S')))
 end_time = int(time.mktime(time.strptime( EVENT_END , '%Y-%m-%d %H:%M:%S'))) 
@@ -111,15 +103,12 @@ print " New Fedora Contributors Onboarded in Event : "+str(ctr)
 
 print "<--------------------------------------------------------------------------------------------------------->"        
 
-
 print "<------------ SHORT TERM ACTIVITY DETAILS ------------------------->\n"
 time_delta = one_day*20
 for username in userList :
     get_user_activity(username , start_time , end_time , time_delta )
 print "<------------------------------------------------------------------>\n\n"   
     
-
-
 print "<------------ LONG TERM ACTIVITY DETAILS ------------------------->\n"
 time_delta = curr - end_time
 if time_delta > one_year :
@@ -127,5 +116,3 @@ if time_delta > one_year :
 for username in userList :
     get_user_activity(username , start_time , end_time , time_delta )
 print "<------------------------------------------------------------------>\n\n"   
-
-    
