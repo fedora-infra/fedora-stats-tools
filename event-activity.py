@@ -121,7 +121,7 @@ curr = time.time()
 start_time = int(time.mktime(time.strptime( EVENT_START, '%Y-%m-%d %H:%M:%S')))
 end_time = int(time.mktime(time.strptime( EVENT_END , '%Y-%m-%d %H:%M:%S'))) 
 
-print "<---------------------- EVENT PARTICIPANTS -----------------------------------------> "
+print "<---------------------- GETTING EVENT PARTICIPANTS -----------------------------------------> "
 if TYPE_ID == 2 :
     URL = URL + '&start='+str(start_time)+"&end="+str(end_time)
 userList = get_users(URL , TYPE_ID) 
@@ -134,12 +134,11 @@ if long_time_delta > one_day * 3:
     long_time_delta = one_day * 3
 
 
-print "<---------------------- NEW FEDORA CONTRIBUTORS AFTER THE EVENT -----------------------------------------> "
+print "<---------------------- FINDING NEW FEDORA CONTRIBUTORS AFTER THE EVENT -----------------------------------------> "
 ctr = 0
 newUser = []
 for username in userList :
     ctr = ctr + 1 
-    print ctr , len(userList)
     if new_user(username , start_time) :
         newUser.append(username)
 
@@ -162,19 +161,15 @@ with open('event_data'+str(curr)+'.csv', 'wb') as csvfile:
     datawriter.writerow(newUser)
     datawriter.writerow([])
   
-print "<--------------------------------------------------------------------------------------------------------->"        
-
 short_activity , long_activity = [] , []
-print "<------------ SHORT TERM ACTIVITY DETAILS ------------------------->\n"
+print "<------------ WORKING ON SHORT TERM ACTIVITY DETAILS ------------------------->\n"
 for username in userList :
     short_activity.append(get_user_activity(username , start_time , end_time , short_time_delta ))
-print "<------------------------------------------------------------------>\n\n"   
-    
 
-print "<------------ LONG TERM ACTIVITY DETAILS ------------------------->\n"
+print "<------------ WORKING ON LONG TERM ACTIVITY DETAILS ------------------------->\n"
 for username in userList :
     long_activity.append(get_user_activity(username , start_time , end_time , long_time_delta ))
-print "<------------------------------------------------------------------>\n\n"   
+
 
 with open('event_data'+str(curr)+'.csv', 'ab') as csvfile:
     datawriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
